@@ -17,3 +17,5 @@ export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 conda activate wxvx 
 
 wxvx -c wxvx_lam.yaml -t plots
+
+wxvx -c wxvx_global.yaml -t plots
