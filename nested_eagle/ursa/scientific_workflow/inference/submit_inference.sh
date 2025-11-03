@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH -J nested_eagle_inference
-#SBATCH -o slurm_inference.out
-#SBATCH -e slurm_inference.err
+#SBATCH -o slurm/inference.%j.out
+#SBATCH -e slurm/inference.%j.err
 #SBATCH --nodes=1
 #SBATCH --account=epic
 #SBATCH -t 01:00:00
