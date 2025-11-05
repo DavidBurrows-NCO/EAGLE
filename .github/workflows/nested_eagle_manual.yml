@@ -101,7 +101,7 @@ jobs:
 
              echo "Slurm job $JOB_ID to run inference on the data has been completed."
 
-  Perform_Verification:
+  Perform_Inference_Postprocessing:
     # The type of runner that the job will run on
     runs-on: ursa
     timeout-minutes: 1440
@@ -112,18 +112,24 @@ jobs:
           cd nested_eagle/ursa/scientific_workflow/verification
 
           mkdir -p postprocessed_files/lam
-              
+
           JOB_ID=$(sbatch submit_postprocessing.sh | awk '{print $4}')
-            
+
             echo "Submitted Validation Slurm job with ID: $JOB_ID"
-            
+           
             while squeue -h -j ${JOB_ID} | grep -q "${JOB_ID}"; do
-               squeue -u $USER
+               squeue -j $JOB_ID
                sleep 30  # Wait for 30 seconds before checking again.
             done
              
              echo "Slurm job $JOB_ID to perform inference postprocessing has been completed."
 
+  Perform_Verification:
+    # The type of runner that the job will run on
+    runs-on: ursa
+    timeout-minutes: 1440
+    needs: Perform_Inference_Postprocessing 
+    steps:
       - name: Perform verification with wxvx
         run: |
           cd nested_eagle/ursa/scientific_workflow/verification
@@ -140,5 +146,5 @@ jobs:
              echo "Slurm job $JOB_ID to perform verification has been completed."
 
              cd $GITHUB_WORKSPACE/nested_eagle/ursa/scientific_workflow/verification/wxvx_workdir
-             find . -name "*.png" -print -quit | grep -q . || { echo "Error: No verification plots found."; exit 1; }
-             echo "Verification process has been successfully completed.
+             find . -name "*.png" -print -quit | grep -q . || { echo "Error: No verification plots found."; exit 1; } 
+             echo "Verification process has been successfully completed."

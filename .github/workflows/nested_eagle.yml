@@ -99,7 +99,7 @@ jobs:
 
              echo "Slurm job $JOB_ID to run inference on the data has been completed."
 
-  Perform_Verification:
+  Perform_Inference_Postprocessing:
     # The type of runner that the job will run on
     runs-on: ursa
     timeout-minutes: 1440
@@ -122,6 +122,12 @@ jobs:
              
              echo "Slurm job $JOB_ID to perform inference postprocessing has been completed."
 
+  Perform_Verification:
+    # The type of runner that the job will run on
+    runs-on: ursa
+    timeout-minutes: 1440
+    needs: Perform_Inference_Postprocessing 
+    steps:
       - name: Perform verification with wxvx
         run: |
           cd nested_eagle/ursa/scientific_workflow/verification
@@ -131,7 +137,7 @@ jobs:
             echo "Submitted Verification Slurm job with ID: $JOB_ID"
            
             while squeue -h -j ${JOB_ID} | grep -q "${JOB_ID}"; do
-               squeue -u $USER
+               squeue -j $JOB_ID
                sleep 30  # Wait for 30 seconds before checking again.
             done
 
