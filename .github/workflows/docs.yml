@@ -4,7 +4,7 @@ on:
     branches: [ feature/auto_docs ]
     paths:
       - docs/**
-  pull_request:
+  pull_request_target:
     types: [issues, opened, reopened, synchronize]
     paths:
       - docs/**
@@ -15,7 +15,7 @@ jobs:
   documentation:
 
     permissions:
-    pull-requests: 'write'
+      pull-requests: 'write'
 
     runs-on: ubuntu-latest
     name: Build and deploy documentation
