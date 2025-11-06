@@ -6,7 +6,7 @@ Postprocess inference output to ensure it is correctly formatted for wxvx:
 
 #### Step 2:
 After post-processing is complete, run:
-`sbatch submit_validation.sh`
+`sbatch submit_verification.sh`
 
 Two separate verification tasks were performed:
 1) A verification of the CONUS only domain against observations
