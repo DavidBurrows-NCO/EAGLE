@@ -3,8 +3,8 @@ mover:
 
 directories:
   zarr: hrrr.zarr
-  cache: hrrr/cache
-  logs: hrrr/logs
+  cache: cache/hrrr
+  logs: logs/hrrr
 
 multisource:
   # Analysis data
