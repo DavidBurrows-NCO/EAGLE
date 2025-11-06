@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #SBATCH -J nested_eagle_training
 #SBATCH -o slurm/training.%j.out
 #SBATCH -e slurm/training.%j.err

@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #SBATCH -J nested_eagle_postprocessing 
 #SBATCH -o slurm/postprocessing.%j.out
 #SBATCH -e slurm/postprocessing.%j.err

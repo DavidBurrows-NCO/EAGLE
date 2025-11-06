@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #SBATCH -J nested_eagle_hrrr_preprocessing
 #SBATCH -o slurm/hrrr_preprocessing.%j.out
 #SBATCH -e slurm/hrrr_preprocessing.%j.err

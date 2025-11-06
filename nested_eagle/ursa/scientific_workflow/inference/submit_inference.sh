@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #SBATCH -J nested_eagle_inference
 #SBATCH -o slurm/inference.%j.out
 #SBATCH -e slurm/inference.%j.err

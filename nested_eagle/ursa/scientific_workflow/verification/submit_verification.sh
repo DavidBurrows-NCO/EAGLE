@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #SBATCH -J nested_eagle_verification 
 #SBATCH -o slurm/verification.%j.out
 #SBATCH -e slurm/verification.%j.err
@@ -20,5 +19,4 @@ sed -i "/^.*workdir:.*$/c\  workdir: $WORKDIR_BASE_PATH\/wxvx_workdir\/lam" wxvx
 sed -i "/^.*workdir:.*$/c\  workdir: $WORKDIR_BASE_PATH\/wxvx_workdir\/global" wxvx_global.yaml
 
 wxvx -c wxvx_lam.yaml -t plots
-
 wxvx -c wxvx_global.yaml -t plots
