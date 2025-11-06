@@ -16,6 +16,10 @@ Model training using `anemoi-core` modules to train a graph-based model
 
 Creating a forecast with `anemoi-inference` to run inference from a model checkpoint
 
-#### Step 4: Post-processing needs and Verificatino (/verification)
+#### Step 4: Post-processing needs and Verification (/verification)
 
 Verifying your forecast (or multiple) with `wxvx` to verify against gridded analysis or observervations
+
+#### Step 5: Tools for visualizing model output and performance (/visualization)
+
+See this folder for further instructions on how to view model output and overall performance.
