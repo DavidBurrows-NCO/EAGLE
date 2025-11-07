@@ -25,9 +25,9 @@ Helpful Quick Tips for Using wxvx
 * Refer to ``wxvx --help`` for command-line usage examples.
 * Visit the `met2go documentation <https://github.com/maddenp-cu/met2go/blob/main/README.md>`_ for details about bundled MET executables and datasets.
 
-================
+
 Installation
-================
+~~~~~~~~~~~~~~~~~~~~~~
 
 This guide explains how to install **wxvx** using **Miniforge**, the conda-forge project’s lightweight implementation of Miniconda.  
 You can skip the first step if you already have a working **conda** installation.
@@ -36,7 +36,7 @@ Currently supported platforms are **Linux aarch64** (ARM) and **Linux x86_64** (
 The example below shows installation for **aarch64**. If your system uses Intel or AMD hardware, download the **x86_64** installer instead.
 
 Install Miniforge
------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
@@ -47,7 +47,7 @@ Install Miniforge
    conda activate
 
 Install wxvx
-------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 Create and activate a conda virtual environment with the latest **wxvx**.  
 If you are using a non-conda-forge conda installation, add the flags  
