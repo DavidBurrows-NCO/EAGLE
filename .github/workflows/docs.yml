@@ -1,4 +1,4 @@
-name: Build and Deploy Documentation
+name: test docs
 on:
   push:
     branches: [ feature/auto_docs ]
