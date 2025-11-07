@@ -43,10 +43,10 @@ jobs:
           path: docs/_build/html
 
       - name: Deploy preview to GitHub Pages
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/_build/html
-          destination_dir: pr-preview/${{ github.event.pull_request.number }}
+          destination_dir: .
 
