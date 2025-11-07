@@ -51,18 +51,7 @@ jobs:
           path: artifact/doc_warnings.log
           if-no-files-found: ignore
 
-      - name: Comment ReadDocs Link in PR
-        #        if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/github-script@v6
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
         with:
-          script: |
-            const message = `
-            Link to ReadTheDocs sample build for this PR can be found at:
-            https://eagle--10.org.readthedocs.build/en/10
-            `
-            github.rest.issues.createComment({
-             issue_number: context.issue.number,
-             owner: context.repo.owner,
-             repo: context.repo.repo,
-             body: message
-            })
+          publish_dir: ./docs/_build/html
