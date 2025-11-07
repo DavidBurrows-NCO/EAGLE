@@ -1,7 +1,8 @@
 name: Docs Preview (Sphinx + GitHub Pages)
 
 on:
-  push: [main, feature/*]
+  push: 
+    branches: [main, feature/*]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
