@@ -3,11 +3,11 @@ on:
   push:
     branches: [ feature/auto_docs ]
       paths:
-      - docs/**
+        - docs/**
   pull_request_target:
     types: [issues, opened, reopened, synchronize]
       paths:
-      - docs/**
+        - docs/**
   workflow_dispatch:
 
 jobs:
