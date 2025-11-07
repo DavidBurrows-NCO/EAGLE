@@ -32,26 +32,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Build documentation
-        run: |
-          ./.github/scripts/build_docs.sh
-
       - name: Upload documentation (on success)
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: documentation
-          path: artifact/documentation
-
-      - name: Upload warnings (on failure)
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: documentation_warnings.log
-          path: artifact/doc_warnings.log
-          if-no-files-found: ignore
+          path: ./docs/build/html
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          publish_dir: ./docs/_build/html
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build/html
