@@ -1,4 +1,3 @@
-jdlsfj;alksfklsad
 =================
 Getting Started
 =================
