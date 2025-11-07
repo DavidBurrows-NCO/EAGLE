@@ -59,7 +59,7 @@ jobs:
             const message = `
             Link to ReadTheDocs sample build for this PR can be found at:
               #https://eagle--${{ github.event.pull_request.number }}.org.readthedocs.build/en/${{ github.event.pull_request.number }}
-            https://eagle--$GITHUB_RUN_NUMBER.org.readthedocs.build/en/$GITHUB_RUN_NUMBER
+            https://eagle--10.org.readthedocs.build/en/10
             `
             github.rest.issues.createComment({
              issue_number: context.issue.number,
