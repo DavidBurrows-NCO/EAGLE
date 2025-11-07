@@ -13,3 +13,5 @@ Two separate verification tasks were performed:
 2) A verficiation of the global domain against observations
 
 Now go to `wxvx_workdir/{DOMAIN}/run/plots/` and open some plots showing RMSE and ME for various variables. 
+
+Additionally, feel free to move to the visualization folder for further resources on viewing model output and performance.
