@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contributing &mdash; eagle  documentation</title>
+  <title>nested-EAGLE &mdash; eagle  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Support" href="support.html" />
-    <link rel="prev" title="nested-EAGLE" href="nested_eagle.html" /> 
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,18 +49,20 @@
 <li class="toctree-l1"><a class="reference internal" href="train_a_model.html">Train a Graph-Based Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inference.html">Create a Forecast</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verification.html">Verify a Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verification.html#installation">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nested_eagle.html">nested-EAGLE</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Community</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pull-requests">Pull Requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">nested-EAGLE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#training-data">Training Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-architecture">Model Architecture</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
 </ul>
 
@@ -78,9 +80,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Contributing</li>
+      <li class="breadcrumb-item active">nested-EAGLE</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/nested_eagle.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -88,12 +90,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="contributing">
-<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h1>
-<p>Placeholder</p>
-<section id="pull-requests">
-<h2>Pull Requests<a class="headerlink" href="#pull-requests" title="Link to this heading"></a></h2>
-<p>Placeholder</p>
+  <section id="nested-eagle">
+<h1>nested-EAGLE<a class="headerlink" href="#nested-eagle" title="Link to this heading"></a></h1>
+<p>The nested-EAGLE model is a prototype model trained on global NOAA Global Forecast System (GFS) data
+with High Resolution Rapid Refresh (HRRR) data over the Contiguous United States (CONUS).
+This builds on previous work from Met Norway (Nipen et al., 2024, arXiv:2409.02891) by creating a
+nested model with lower resolution global data and high resolution over an area of interest.</p>
+<p>TODO - Insert image of nested domain here.</p>
+<p>nested-EAGLE configurations were provided by Tim Smith at NOAA Physical Sciences Laboratory.</p>
+<section id="training-data">
+<h2>Training Data<a class="headerlink" href="#training-data" title="Link to this heading"></a></h2>
+<p>Datasets:</p>
+<ul class="simple">
+<li><p>GFS convservatively regridded to 1-degree</p></li>
+<li><p>HRRR conservatively regridded to 15-km</p></li>
+</ul>
+<p>Time period:</p>
+<ul class="simple">
+<li><p>Training dataset: 2015-02-01T06 to 2023-01-31T18</p></li>
+<li><p>Validation dataset: 2023-02-01T06 to 2024-01-31T18</p></li>
+</ul>
+<p>Variables:</p>
+<ul class="simple">
+<li><p>Prognostic: gh, u, v, w, t, q, sp, u10, v10, t2m, t_surface, sh2</p></li>
+<li><p>Diagnostic: u80, v80, accum_tp (use fhr 6)</p></li>
+<li><p>Forcing: lsm, orog, cos_latitude, sin_latitude, cos_longitude, sin_longitude, cos_julian_day, sin_julian_day, cos_local_time, sin_local_time, insolation</p></li>
+<li><p>Levels: 100, 150, 200, 250, 300, 400, 500, 600, 700, 850, 925, 1000</p></li>
+</ul>
+</section>
+<section id="model-architecture">
+<h2>Model Architecture<a class="headerlink" href="#model-architecture" title="Link to this heading"></a></h2>
+<p>Encoder: Graph Transformer</p>
+<p>Processor: Shifted Window Transformer with 512 channels</p>
+<p>Decoder: Graph Transformer</p>
+<p>Graph: Used for the encoder and decoder to connect targets to nodes via nearest neighbors (encoder_knn=12, decode_knn=3).
+Latent mesh is 4 times more coarse than native data.</p>
 </section>
 </section>
 
@@ -101,8 +132,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="nested_eagle.html" class="btn btn-neutral float-left" title="nested-EAGLE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="support.html" class="btn btn-neutral float-right" title="Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

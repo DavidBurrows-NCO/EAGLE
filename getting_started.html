@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Eagle! &mdash; eagle  documentation</title>
+  <title>Getting Started &mdash; eagle  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Overview of Full Pipeline" href="pipeline_overview.html" /> 
+    <link rel="next" title="nested-EAGLE" href="nested_eagle.html" />
+    <link rel="prev" title="Verify a Forecast" href="verification.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -30,7 +31,7 @@
 
           
           
-          <a href="#" class="icon icon-home">
+          <a href="index.html" class="icon icon-home">
             eagle
           </a>
 <div role="search">
@@ -48,10 +49,15 @@
 <li class="toctree-l1"><a class="reference internal" href="train_a_model.html">Train a Graph-Based Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inference.html">Create a Forecast</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verification.html">Verify a Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verification.html#installation">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#google-collab">Google Collab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#train-a-small-model-with-noaa-replay-data">Train a Small Model with NOAA-Replay Data</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="nested_eagle.html">nested-EAGLE</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Community</span></p>
@@ -66,17 +72,17 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">eagle</a>
+          <a href="index.html">eagle</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Welcome to Eagle!</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting Started</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -84,50 +90,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="welcome-to-eagle">
-<h1>Welcome to Eagle!<a class="headerlink" href="#welcome-to-eagle" title="Link to this heading"></a></h1>
-<p>Welcome to the github repository for Project EAGLE (Experimental AI Global and Limited-area Ensemble forecast system)!
-EAGLE is a joint effort  between NOAA Research Laboratories and the Earth Prediction Innovation Center (EPIC) in the
-Office of Oceanic and Atmospheric Research (OAR), and the National Weather Service (NWS).
-The goal of Project EAGLE is to provide the community with tools to test and deploy their own AI models for weather prediction.
-As a part of Project EAGLE, this repository current contains various configurations to guide users through
-a complete scientific workflow to train an AI model. This pipeline includes environment creation, data preprocessing, model training,
-inference to create a forecast, verification of forecasts, and visualization tools. See the various pages below for more details.</p>
-<p>For further information about Project Eagle, please see the <a class="reference external" href="https://www.epic.noaa.gov/ai/eagle-overview/">NOAA EPIC website</a></p>
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>We have included a few options to learn how to get started with this pipeline.</p>
+<section id="google-collab">
+<h2>Google Collab<a class="headerlink" href="#google-collab" title="Link to this heading"></a></h2>
+<p>A Google Colab notebook was created to provide guidance on how to complete this entire end-to-end ML pipeline.
+It guides you through every step of the pipeline from environment creation to verifiying a forecast.
+You are able to run it with free resources on a T4 GPU. It is also compatible with paid resources (A-100) if that is available to you.
+It is possible to run this on a CPU, but it will take a very long time. If you wish to run on a CPU consider training the model for only a couple of steps.
+This notebook is designed to train a model on a very small amount of data; therefore, it is not expected to produce
+meaningful or physical results. Its main purpose is to demonstrate the entire pipeline and guide users to understand
+the workflow from start to finish and sucessfully complete each step.</p>
 </section>
-<section id="table-of-contents">
-<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Full Pipeline</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pipeline_overview.html">Overview of Full Pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_creation.html">Dataset Creation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="train_a_model.html">Train a Graph-Based Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="inference.html">Create a Forecast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="verification.html">Verify a Forecast</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nested_eagle.html">nested-EAGLE</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Community</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
-</ul>
-</div>
+<section id="train-a-small-model-with-noaa-replay-data">
+<h2>Train a Small Model with NOAA-Replay Data<a class="headerlink" href="#train-a-small-model-with-noaa-replay-data" title="Link to this heading"></a></h2>
+<p>This option is considered a next step from the Google Colab notebook.
+It provides a more official set-up that can run the entire pipeline on a HPC machine using slurm or in AzureML using Command jobs.
+This version trains a model using 1 year of NOAA-Replay reanalysis data, which offers a more realisitc example
+of how the full system operates and is deployed in practice.
+These results are still not expected to be meaninful or look physical, but this serves as a great next step in learning the full pipeline
+in a more scalable setting.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="pipeline_overview.html" class="btn btn-neutral float-right" title="Overview of Full Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="verification.html" class="btn btn-neutral float-left" title="Verify a Forecast" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nested_eagle.html" class="btn btn-neutral float-right" title="nested-EAGLE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

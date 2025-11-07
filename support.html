@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview of Full Pipeline &mdash; eagle  documentation</title>
+  <title>Support &mdash; eagle  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Dataset Creation" href="data_creation.html" />
-    <link rel="prev" title="Welcome to Eagle!" href="index.html" /> 
+    <link rel="prev" title="Contributing" href="contributing.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,18 +42,13 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Full Pipeline</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview of Full Pipeline</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#step-1-dataset-creation">Step 1: Dataset Creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-2-train-a-graph-based-model">Step 2: Train a Graph-Based Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-3-create-a-forecast">Step 3: Create a Forecast</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-4-verify-a-forecast">Step 4: Verify a Forecast</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pipeline_overview.html">Overview of Full Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_creation.html">Dataset Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="train_a_model.html">Train a Graph-Based Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inference.html">Create a Forecast</a></li>
 <li class="toctree-l1"><a class="reference internal" href="verification.html">Verify a Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verification.html#installation">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
@@ -62,9 +56,9 @@
 <li class="toctree-l1"><a class="reference internal" href="nested_eagle.html">nested-EAGLE</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Community</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Support</a></li>
 </ul>
 
         </div>
@@ -81,9 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Overview of Full Pipeline</li>
+      <li class="breadcrumb-item active">Support</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/pipeline_overview.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/support.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -91,34 +85,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="overview-of-full-pipeline">
-<h1>Overview of Full Pipeline<a class="headerlink" href="#overview-of-full-pipeline" title="Link to this heading"></a></h1>
-<p>An end-to-end machine learning pipeline for weather prediction.</p>
-<p>The steps of this pipeline include:</p>
-<section id="step-1-dataset-creation">
-<h2>Step 1: Dataset Creation<a class="headerlink" href="#step-1-dataset-creation" title="Link to this heading"></a></h2>
-<p>Use <cite>ufs2arco</cite> to create training, validation, and test datasets.</p>
-</section>
-<section id="step-2-train-a-graph-based-model">
-<h2>Step 2: Train a Graph-Based Model<a class="headerlink" href="#step-2-train-a-graph-based-model" title="Link to this heading"></a></h2>
-<p>Use <cite>anemoi-core</cite> modules to train a graph-based model.</p>
-</section>
-<section id="step-3-create-a-forecast">
-<h2>Step 3: Create a Forecast<a class="headerlink" href="#step-3-create-a-forecast" title="Link to this heading"></a></h2>
-<p>Use <cite>anemoi-inference</cite> to run inference.</p>
-</section>
-<section id="step-4-verify-a-forecast">
-<h2>Step 4: Verify a Forecast<a class="headerlink" href="#step-4-verify-a-forecast" title="Link to this heading"></a></h2>
-<p>Use <cite>wxvx</cite> to verify a forecast against gridded analysis or observations.</p>
-</section>
+  <section id="support">
+<h1>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h1>
+<p>If you encounter any errors please raise an issue in the github repository.</p>
+<p>You can also email ___________ for further support.</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Eagle!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="data_creation.html" class="btn btn-neutral float-right" title="Dataset Creation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="contributing.html" class="btn btn-neutral float-left" title="Contributing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -50,12 +50,12 @@
 <li class="toctree-l1"><a class="reference internal" href="inference.html">Create a Forecast</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Verify a Forecast</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#wxvx-a-lightweight-met-driven-verification-workflow">wxvx: A Lightweight MET-Driven Verification Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#helpful-quick-tips-for-using-wxvx">Helpful Quick Tips for Using wxvx</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-miniforge">Install Miniforge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-wxvx">Install wxvx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helpful-quick-tips-for-using-wxvx">Helpful Quick Tips for Using wxvx</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-miniforge">Install Miniforge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-wxvx">Install wxvx</a></li>
 </ul>
 </li>
 </ul>
@@ -114,15 +114,16 @@ It has already been used to verify global and regional AI forecasts and is equal
 <li><p>Refer to <code class="docutils literal notranslate"><span class="pre">wxvx</span> <span class="pre">--help</span></code> for command-line usage examples.</p></li>
 <li><p>Visit the <a class="reference external" href="https://github.com/maddenp-cu/met2go/blob/main/README.md">met2go documentation</a> for details about bundled MET executables and datasets.</p></li>
 </ul>
+</section>
+</section>
 <section id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
 <p>This guide explains how to install <strong>wxvx</strong> using <strong>Miniforge</strong>, the conda-forge project’s lightweight implementation of Miniconda.
 You can skip the first step if you already have a working <strong>conda</strong> installation.</p>
 <p>Currently supported platforms are <strong>Linux aarch64</strong> (ARM) and <strong>Linux x86_64</strong> (Intel/AMD).
 The example below shows installation for <strong>aarch64</strong>. If your system uses Intel or AMD hardware, download the <strong>x86_64</strong> installer instead.</p>
-</section>
 <section id="install-miniforge">
-<h3>Install Miniforge<a class="headerlink" href="#install-miniforge" title="Link to this heading"></a></h3>
+<h2>Install Miniforge<a class="headerlink" href="#install-miniforge" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/conda-forge/miniforge/releases/download/25.3.0-3/Miniforge3-Linux-aarch64.sh
 bash<span class="w"> </span>Miniforge3-Linux-aarch64.sh<span class="w"> </span>-bfp<span class="w"> </span>conda
 rm<span class="w"> </span>Miniforge3-Linux-aarch64.sh
@@ -132,7 +133,7 @@ conda<span class="w"> </span>activate
 </div>
 </section>
 <section id="install-wxvx">
-<h3>Install wxvx<a class="headerlink" href="#install-wxvx" title="Link to this heading"></a></h3>
+<h2>Install wxvx<a class="headerlink" href="#install-wxvx" title="Link to this heading"></a></h2>
 <p>Create and activate a conda virtual environment with the latest <strong>wxvx</strong>.
 If you are using a non-conda-forge conda installation, add the flags
 <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">--override-channels</span></code> to the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span></code> command.</p>
@@ -144,7 +145,6 @@ wxvx<span class="w"> </span>--version
 <p>When activated, the environment automatically includes the <strong>met2go</strong> package,
 which provides <strong>MET</strong>, select <strong>METplus</strong> executables, and supporting data files.</p>
 <p>For more details, see the <a class="reference external" href="https://github.com/maddenp-cu/met2go/blob/main/README.md">met2go documentation</a>.</p>
-</section>
 </section>
 </section>
 
