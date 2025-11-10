@@ -1,5 +1,5 @@
 =================
-TESTING UPDATES TO DOCS/**
+TESTING UPDATES TO DOCS/*
 Create a Forecast
 =================
 
