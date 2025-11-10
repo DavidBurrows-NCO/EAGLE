@@ -46,6 +46,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      baseurl: "/eagle"
     runs-on: ubuntu-latest
     needs: build
     steps:
