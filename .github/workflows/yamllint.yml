@@ -3,10 +3,10 @@ name: Lint YAML files
 on:
   push:
     branches: [main, feature/*]
-    paths: [nested_eagle, .github, docs]
+    paths: [nested_eagle/**, .github/**, docs/**]
   pull_request:
     types: [opened, reopened, synchronize]
-    paths: [nested_eagle, .github, docs]
+    paths: [nested_eagle/**, .github/**, docs/**]
   workflow_dispatch:
 
 jobs:
