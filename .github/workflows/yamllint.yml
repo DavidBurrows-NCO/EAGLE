@@ -31,6 +31,6 @@ jobs:
 
       - name: Run yamllint
         run: |
-          #yamllint --format colored --strict . # fail on 1 or more errors
-          yamllint . --format colored -d relaxed # don't fail on errors
+          yamllint . --format colored --strict # fail on 1 or more errors
+          #yamllint . --format colored -d relaxed # don't fail on errors
 
