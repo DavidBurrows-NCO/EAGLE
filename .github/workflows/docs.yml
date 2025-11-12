@@ -1,0 +1,46 @@
+name: test docs
+on:
+  push:
+    branches: [ feature/auto_docs ]
+      #    paths:
+      #- docs/**
+  pull_request_target:
+    types: [issues, opened, reopened, synchronize]
+      #paths:
+      #- docs/**
+  workflow_dispatch:
+
+jobs:
+  documentation:
+
+    permissions:
+      contents: 'write'
+
+    runs-on: ubuntu-latest
+    name: Build and deploy documentation
+
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install (upgrade) python dependencies
+        run: |
+          pip install --upgrade pip sphinx sphinx-gallery sphinx_rtd_theme sphinxcontrib-bibtex
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Upload documentation (on success)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: documentation
+          path: ./docs/build/html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build/html
