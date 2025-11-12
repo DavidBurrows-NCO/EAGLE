@@ -51,7 +51,7 @@ Provide a concise commit message for any subcomponents; delete unnecessary info.
 ```
 ## Subcomponent Pull Requests:
 <!--
-Provide a list of NOAA-EPIC/EAGLE subcomponents involved with this PR and include links to subcomponent PRs.
+Provide a list of NOAA-EPIC/EAGLE and subcomponents involved with this PR and include links to subcomponent PRs.
 Example:
 * EAGLE: NOAA-EPIC/EAGLE#13
 * UFS2ARCO: NOAA-PSL/UFS2ARCO#734
