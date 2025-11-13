@@ -24,8 +24,8 @@ jobs:
       - name: Add a ci-running label
         uses: actions-ecosystem/action-add-labels@v1
         with:
-          labels: "ci-running" # Adding ci-running label to prevent duplicate runs.
-          github_token: ${{ secrets.GH_TOKEN }}
+          labels: 'ci-running' # Adding ci-running label to prevent duplicate runs.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Submit Initial Grids
         run: |
           cd nested_eagle/ursa/scientific_workflow/data
@@ -168,5 +168,5 @@ jobs:
         if: always()
         uses: mondeja/remove-labels-gh-action@v2.0.0
         with:
-          labels: "ci-running"
-          token: ${{ secrets.GH_TOKEN }}
+          labels: 'ci-running'
+          token: ${{ secrets.GITHUB_TOKEN }}
