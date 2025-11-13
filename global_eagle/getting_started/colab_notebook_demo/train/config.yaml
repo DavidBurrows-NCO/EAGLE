@@ -77,13 +77,13 @@ dataloader:
     test: 1
   training:
     start: "2022-01-01"
-    end: "2022-01-02"
-  validation:
-    start: "2022-01-03"
     end: "2022-01-04"
-  test:
+  validation:
     start: "2022-01-05"
-    end: "2022-01-06"
+    end: "2022-01-14"
+  test:
+    start: "2022-01-15"
+    end: "2022-01-16"
 
 diagnostics:
   plot:
