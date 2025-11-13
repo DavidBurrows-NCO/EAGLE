@@ -22,7 +22,7 @@ forecast:
 leadtimes:
   start: 0
   step: 6
-  stop: 240
+  stop: 48
 meta:
   grids: "{{ meta.workdir }}/grids"
   workdir: wxvx_workdir/global
