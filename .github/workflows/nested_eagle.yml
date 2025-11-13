@@ -137,7 +137,7 @@ jobs:
     timeout-minutes: 1440
     needs: Perform_Inference_Postprocessing
     steps:
-      - name: Perform grid2obs verification with wxvx
+      - name: Perform grid2obs and grid2obs verification with wxvx
         run: |
           cd $GITHUB_WORKSPACE/nested_eagle/ursa/scientific_workflow/verification/grid2obs
 
@@ -151,6 +151,7 @@ jobs:
              echo "Submitted Slurm job with ID: $JOB_ID2"
              while squeue -h -j ${JOB_ID1},${JOB_ID2} | grep -q "${JOB_ID1}\|${JOB_ID2}"; do
                 squeue -j ${JOB_ID1},${JOB_ID2}
+             done
 
             cd $GITHUB_WORKSPACE/nested_eagle/ursa/scientific_workflow/verification/grid2obs/wxvx_workdir
             find ./lam -name "*.png" -print -quit | grep -q . || { echo "Error: No LAM grid2obs verification plots found."; exit 1; } 
