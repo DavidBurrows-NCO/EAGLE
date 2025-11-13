@@ -1,39 +1,6 @@
-# if you are just running 1 initialization, make start==end
-initializations_to_run:
-  start: "2022-01-03T00:00:00"
-  end: "2022-01-03T00:00:00"
-  freq: "3h"
-
-# this next portion lists all variable info out so the script knows what variables to process.
-# can be helpful if you don't care about all variables or levels.
-# it will only process and save out what you list below.
-level_variables:
-  - spfh
-  - tmp
-  - ugrd
-  - vgrd
-
-levels:
-  - 25
-  - 75
-  - 125
-  - 175
-  - 225
-  - 275
-  - 325
-  - 375
-  - 425
-  - 475
-  - 525
-  - 575
-  - 625
-  - 675
-  - 725
-  - 775
-  - 825
-  - 875
-  - 925
-  - 975
+forecast_path: ../inference
+output_path: postprocessed_files/
+model_type: global
 
 vars_of_interest:
   - pressfc
@@ -121,3 +88,29 @@ vars_of_interest:
   - vgrd_925
   - vgrd_975
   - vgrd10m
+
+levels:
+  - 25
+  - 75
+  - 125
+  - 175
+  - 225
+  - 275
+  - 325
+  - 375
+  - 425
+  - 475
+  - 525
+  - 575
+  - 625
+  - 675
+  - 725
+  - 775
+  - 825
+  - 875
+  - 925
+  - 975
+
+start_date: 2022-01-03T00
+end_date: 2022-01-03T00
+freq: 3h
