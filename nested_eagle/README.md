@@ -1,8 +1,8 @@
-### Overview
+## Overview
 
-See the `ursa` folder to complete the `nested_eagle` pipeline.
+As of right now, the nested-EAGLE pipline has been configured to run on Ursa. It is possible to run these configurations on other machines; however, that will take some adjustments. A few tips are provided throughout the pipeline to help users implement this pipeline elsewhere.
 
-As of right now, the pipline has been configured to run on Ursa. It is possible to run these configurations on other machines; however, that will take some adjustments. A few tips are provided throughout the pipeline on how to implement this pipeline elsewhere.
+See the `ursa` folder to complete the `nested-EAGLE` pipeline on Ursa.
 
 ### Acknowledgements
 
