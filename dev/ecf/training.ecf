@@ -1,0 +1,45 @@
+#!/bin/bash
+#SBATCH -J nested_eagle_training
+#SBATCH -o slurm/training.%j.out
+#SBATCH -e slurm/training.%j.err
+#SBATCH --nodes=1
+#SBATCH --account=epic
+#SBATCH -t 03:00:00
+#SBATCH --partition=u1-h100
+#SBATCH --gres=gpu:h100:1
+#SBATCH --mem=128g
+#SBATCH --qos=gpuwf
+#SBATCH --ntasks-per-node=1
+
+set -x
+
+## Set environment vars needed for prod type workflow
+export KEEPDATA="YES"
+export SLURM_JOB_NUM_NODES=${SLURM_JOB_NUM_NODES}
+export SLURM_NTASKS=${SLURM_NTASKS}
+export SLURM_GPUS_PER_NODE=1
+export HYDRA_FULL_ERROR=1
+
+export jobid=${SLURM_JOB_ID}
+echo "jobid=${jobid}"
+
+# shellcheck disable=SC1091
+source /scratch4/NAGAPE/epic/role-epic/miniconda/bin/activate
+conda activate eagle
+module load openmpi cuda gcc
+
+export HOMEeagle=${PWD}/..
+
+${HOMEeagle}/jobs/JTRAINING
+
+err=$?
+if [[ ${err} -ne 0 ]]; then
+#    ecflow_client --msg="*** JOB ${ECF_NAME} ERROR RUNNING J-SCRIPT"
+#    ecflow_client --abort
+    echo "Aborted job with err=${err}"
+    exit ${err}
+else
+    echo "Completed job"
+    exit ${err}
+fi
+

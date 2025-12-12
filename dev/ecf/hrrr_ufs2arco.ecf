@@ -1,0 +1,42 @@
+#!/bin/bash
+#SBATCH -J nested_eagle_hrrr_preprocessing
+#SBATCH -o slurm/hrrr_preprocessing.%j.out
+#SBATCH -e slurm/hrrr_preprocessing.%j.err
+#SBATCH --account=epic
+#SBATCH --partition=u1-service
+#SBATCH --mem=128g
+#SBATCH --nodes=1
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=1
+#SBATCH --time=02:00:00
+
+set -x
+
+## Set environment vars needed for prod type workflow
+export KEEPDATA="NO"
+export SLURM_JOB_NUM_NODES=${SLURM_JOB_NUM_NODES}
+export SLURM_NTASKS=${SLURM_NTASKS}
+
+export jobid=${SLURM_JOB_ID}
+echo "jobid=${jobid}"
+
+# shellcheck disable=SC1091
+source /scratch4/NAGAPE/epic/role-epic/miniconda/bin/activate
+conda activate eagle
+module load openmpi gcc
+
+export HOMEeagle=${PWD}/..
+
+${HOMEeagle}/jobs/JHRRR_UFS2ARCO
+
+err=$?
+if [[ ${err} -ne 0 ]]; then
+#    ecflow_client --msg="*** JOB ${ECF_NAME} ERROR RUNNING J-SCRIPT"
+#    ecflow_client --abort
+    echo "Aborted job with err=${err}"
+    exit ${err}
+else
+    echo "Completed job"
+    exit ${err}
+fi
+
