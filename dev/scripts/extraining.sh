@@ -1,0 +1,1 @@
+execute anemoi-training
