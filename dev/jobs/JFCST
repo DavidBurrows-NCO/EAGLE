@@ -1,1 +1,49 @@
-run Anemoi-inference
+#!/bin/bash
+set -x
+
+# Prepend time to output
+export PS4=' $SECONDS + '
+
+# Create temporary working directory
+DATA=/scratch3/NCEPDEV/nems/${USER}/DATAeagle/${jobid:?}
+DATAeagle=/scratch3/NCEPDEV/nems/${USER}/DATAeagle
+export DATA=${DATA:-${DATAROOT:?}/${jobid:?}}
+mkdir -p $DATA
+cd $DATA
+
+# Set up parent directory and all sub-directories for current model
+export SCRIPTSeagle=${HOMEeagle}/scripts
+export PARMeagle=${HOMEeagle}/parm
+
+export MAILTO=${MAILTO:-'david.burrows@noaa.gov'}
+
+## Variables used in com directory organization
+export NET=${NET:-eagle}
+export RUN=${RUN:-eagle}
+
+# Locations of incoming data
+export COMINeagle="${DATAeagle}/${NET}/v1.0/${RUN}"
+export COMINeagle=${COMINeagle:-$(compath.py ${envir}/eagle/${eagle_ver})}
+
+# Locations of outgoing data
+COMOUTeagle="${DATAeagle}/${NET}/v1.0/${RUN}"
+export COMOUTeagle=${COMOUTeagle:-$(compath.py -o $NET/$eagle_ver/$RUN.$PDY)}
+
+# Create output directories
+mkdir -p $COMOUTeagle
+
+# Execute ex-script
+${SCRIPTSeagle}/exfcst.sh
+export err=$?; #err_chk
+
+if [[ ${err} -ne 0 ]]; then
+    echo "Aborted job with err=${err}"
+    exit ${err}
+fi
+
+# Remove temporary working directory
+if [ "${KEEPDATA^^}" != YES ]; then
+  rm -rf $DATA
+fi
+
+date
