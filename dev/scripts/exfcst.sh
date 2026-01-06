@@ -16,7 +16,6 @@ if [[ ${err} -ne 0 ]]; then
 fi
 
 # Copy output to COMOUTeagle
-#cp ${DATA}/conservative_719x1440_180x360.nc ${COMOUTeagle}
-#cp -r ${DATA}/gfs.zarr ${COMOUTeagle}
+cp ${DATA}/inference_files/*.nc ${COMOUTeagle}
 
 exit
