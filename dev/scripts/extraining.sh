@@ -27,7 +27,6 @@ if [[ ${err} -ne 0 ]]; then
 fi
 
 # Copy output to COMOUTeagle
-#cp ${DATA}/conservative_719x1440_180x360.nc ${COMOUTeagle}
-#cp -r ${DATA}/gfs.zarr ${COMOUTeagle}
+cp ${DATA}/outputs/checkpoint/*/inference-last.ckpt ${COMOUTeagle}
 
 exit
