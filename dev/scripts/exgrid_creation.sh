@@ -10,9 +10,9 @@ if [[ ${err} -ne 0 ]]; then
 fi
 
 # Copy output to COMOUTeagl
-cp ${DATA}/global_one_degree.nc ${COMOUTeagl}
-cp ${DATA}/hrrr_15km.nc ${COMOUTeagl}
-cp ${DATA}/latentx2.spongex1.combined.sorted.npz ${COMOUTeagl}
+cp ${DATA}/global_one_degree.nc ${COMOUTeagle}
+cp ${DATA}/hrrr_15km.nc ${COMOUTeagle}
+cp ${DATA}/latentx2.spongex1.combined.sorted.npz ${COMOUTeagle}
 
 exit
 
