@@ -14,7 +14,7 @@ export NOW
 
 activate = @source $(INSTALLDIR)/etc/profile.d/conda.sh && conda activate $(1)
 check    = @$(if $(1),,$(error $(2)= argument required))
-exec     = set -x && uw execute$(VERBOSE) --config-file $(config) --module $(PACKAGE)/$(1)/$(2).py --classname $(3) --task $(4)
+exec     = set -x && uw execute$(VERBOSE) --config-file $(config) --module $(PACKAGE)/$(1)/$(2).py --classname $(3) --task $(4) --schema-file ok.jsonschema
 make     = $(MAKE) --no-print-directory
 modenv   = $(env4mod_$(1))
 modloop  = @set -e && for mod in $(PACKAGE) $(MODULES); do $(make) mod=$$mod $(1); done
