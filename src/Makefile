@@ -2,7 +2,7 @@ BASHSRCS = $(wildcard ../.github/scripts/*) format setup
 HELPERS  = vx zarr
 MODULES  = data inference training visualization wxvx
 PACKAGE  = eagle
-STEPS    = data grids-and-meshes inference training vis-grid-global vis-grid-lam vis-obs-global vis-obs-lam vx-grid-global vx-grid-lam vx-obs-global vx-obs-lam zarr-gfs zarr-hrrr
+STEPS    = data grids-and-meshes inference training vis-grid-global vis-grid-lam vis-obs-global vis-obs-lam vx-grid-global vx-grid-lam vx-obs-global vx-obs-lam zarr-gfs 
 TOOLING  = config devenv env format lint realize shellcheck test typecheck unittest validate yamllint
 VERBOSE  = $(if $(filter undefined,$(origin DEBUG)),, --verbose)
 
@@ -46,7 +46,6 @@ config:
 data:
 	@$(make) grids-and-meshes
 	@$(make) zarr-gfs
-	@$(make) zarr-hrrr
 
 devenv:
 	$(call check,$(cudascript),cudascript)
@@ -193,6 +192,3 @@ endif
 
 zarr-gfs:
 	@$(make) zarr source=gfs
-
-zarr-hrrr:
-	@$(make) zarr source=hrrr
