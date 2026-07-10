@@ -1,0 +1,37 @@
+# Configuration for the Azure Cycle Cloud platform.
+
+# yamllint disable rule:anchors rule:line-length
+
+app:
+  gpu:
+    batchargs: &gpu-batchargs
+      nodes: 1
+      partition: htc
+  launcher: srun --export=ALL
+  partitions:
+    compute: htc
+  platform: &platform
+    account: epic
+    scheduler: slurm
+inference:
+  execution:
+    batchargs:
+      partition: '{{ app.partitions.compute }}'
+      memory: 32G
+      walltime: '00:20:00'
+  anemoi:
+    device: cpu
+val:
+  azure_mpi_args:
+    - export LD_LIBRARY_PATH=/opt/pmix/4.2.9/lib:$LD_LIBRARY_PATH
+    - export FI_PROVIDER=tcp
+zarrs:
+  common:
+    execution:
+      batchargs:
+        --mem-per-cpu: 20G
+        partition: '{{ app.partitions.compute }}'
+        walltime: '00:20:00'
+      envcmds: !list '{{ val.azure_mpi_args + val.zarrs.envcmds }}'
+      mpiargs:
+        - "--export=ALL --mpi=pmix"
