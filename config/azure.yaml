@@ -1,0 +1,38 @@
+# Configuration for the Azure Cycle Cloud platform.
+
+# yamllint disable rule:anchors rule:line-length
+
+app:
+  gpu:
+    batchargs: &gpu-batchargs
+      --gres: 'gpu:1'
+      nodes: 1
+      partition: gpu
+  launcher: srun --export=ALL
+  partitions:
+    netaccess: htc
+  platform: &platform
+    account: epic
+    scheduler: slurm
+val:
+  azure_mpi_args:
+    - export LD_LIBRARY_PATH=/opt/pmix/4.2.9/lib:$LD_LIBRARY_PATH
+    - export FI_PROVIDER=tcp
+  inference:
+    envcmds:
+     - export CUDA_HOME=~/local/cuda-12.8
+     - export CUDA_PATH="$CUDA_HOME"
+     - export PATH="$CUDA_HOME/bin:$PATH"
+     - export CPATH="$CUDA_HOME/include${CPATH:+:$CPATH}"
+     - export LIBRARY_PATH="$CUDA_HOME/lib64${LIBRARY_PATH:+:$LIBRARY_PATH}"
+     - export LD_LIBRARY_PATH="$CUDA_HOME/lib64${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+zarrs:
+  common:
+    execution:
+      batchargs:
+        --mem-per-cpu: 20G
+        partition: '{{ app.partitions.netaccess }}'
+        walltime: '00:20:00'
+      envcmds: !list '{{ val.azure_mpi_args + val.zarrs.envcmds }}'
+      mpiargs:
+        - "--export=ALL --mpi=pmix"
