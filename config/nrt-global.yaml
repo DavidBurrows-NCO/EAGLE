@@ -2,7 +2,7 @@
 
 app:
   nrt:
-    multistep_input_offset: !timedelta 0
+    multistep_input_offset: !timedelta 6
     now: !datetime '{{ "NOW" | env }}'
     ic_start: !datetime '{{ app.nrt.inference_start - app.nrt.multistep_input_offset }}'
     inference_start: !datetime '{{ app.nrt.now - app.nrt.offset - app.nrt.latency }}'
