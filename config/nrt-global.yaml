@@ -20,6 +20,19 @@ app:
 grids_and_meshes:
   rundir: '{{ app.rundir }}/data'
   global_grid_resolution_deg: 0.25
+prewxvx:
+  global:
+    prewxvx:
+      eagle_tools:
+        vars_of_interest:
+          - 2t
+          - z
+          - sp
+          - t
+          - u
+          - 10u
+          - v
+          - 10v
 training: !remove
 ufs2arco:
   mover:
