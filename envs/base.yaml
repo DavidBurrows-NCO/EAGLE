@@ -1,5 +1,7 @@
 channels:
   - conda-forge
   - nodefaults
+  - oar-gsl
 dependencies:
   - pip
+  - rocoto 1.3.*

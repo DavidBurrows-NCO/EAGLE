@@ -4,9 +4,10 @@ HELPERS  = vx zarr
 MODULES  = data inference training visualization wxvx
 PACKAGE  = eagle
 STEPS    = data grids-and-meshes inference training vis-grid-global vis-grid-lam vis-obs-global vis-obs-lam vx-grid-global vx-grid-lam vx-obs-global vx-obs-lam vx-stageiv-lam
-TOOLING  = config devenv env format lint realize shellcheck test typecheck unittest validate yamllint
+TOOLING  = config devenv env format lint realize shellcheck test typecheck unittest validate workflow yamllint
 VERBOSE  = $(if $(filter undefined,$(origin DEBUG)),, --verbose)
 
+BATCH := $(if $(filter True,$(shell $(ACTIVATE) base; python -c "import yaml; print(yaml.safe_load('$(batch)' or 'yes'))")), --batch)
 INSTALLDIR ?= conda
 SHELL      := $(shell which bash)
 NOW        := $(shell date -u +"%Y-%m-%dT%H:%M:%S")
@@ -80,7 +81,7 @@ ifeq ($(task),?)
 	$(call tasklist,inference,inference,Inference)
 else
 	$(call check,$(config),config)
-	$(call exec,inference,inference,Inference,$(or $(task),run) --batch)
+	$(call exec,inference,inference,Inference,$(or $(task),run)$(BATCH))
 endif
 
 lint:
@@ -110,7 +111,7 @@ ifeq ($(task),?)
 	$(call tasklist,training,training,Training)
 else
 	$(call check,$(config),config)
-	$(call exec,training,training,Training,$(or $(task),run) --batch)
+	$(call exec,training,training,Training,$(or $(task),run)$(BATCH))
 endif
 
 typecheck:
@@ -167,7 +168,7 @@ else
 	$(call check,$(config),config)
 	$(call check,$(extent),extent)
 	$(call check,$(truth),truth)
-	$(call exec,wxvx,wxvx,WXVX,$(or $(task),run) --key-path vx.grid2$(truth).$(extent) --batch)
+	$(call exec,wxvx,wxvx,WXVX,$(or $(task),run) --key-path vx.grid2$(truth).$(extent)$(BATCH))
 endif
 
 vx-grid-global:
@@ -185,6 +186,12 @@ vx-obs-lam:
 vx-stageiv-lam:
 	@$(make) vx truth=stageiv extent=lam
 
+workflow:
+	$(call check,$(config),config)
+	$(call activate,base)
+	@(set -x && uw rocoto realize -c $(config) -o eagle.xml)
+	@(set -x && uw rocoto iterate -w eagle.xml -d eagle.db --cycle 2022-02-03T12 --all)
+
 yamllint:
 	$(call activate,base)
 	@echo "=> Linting YAML configs"
@@ -197,5 +204,5 @@ ifeq ($(task),?)
 else
 	$(call check,$(config),config)
 	$(call check,$(source),source)
-	$(call exec,data,zarr,Zarr,$(or $(task),run) --key-path zarrs.$(source) --batch)
+	$(call exec,data,zarr,Zarr,$(or $(task),run) --key-path zarrs.$(source)$(BATCH))
 endif
